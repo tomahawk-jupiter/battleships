@@ -1,8 +1,8 @@
-import Player from '../factories/player.js'
+import Player from '../src/factories/player.js'
 
-const player1 = new Player('player1', 4);
+const player1 = Player('player1', 4);
 player1.board.placeShip(3, [1, 1], 'horizontal');
-const player2 = new Player('player2', 4);
+const player2 = Player('player2', 4);
 player2.board.placeShip(3, [1, 1], 'horizontal');
 
 test('Player can make attack', () => {

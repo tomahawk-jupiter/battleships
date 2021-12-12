@@ -1,6 +1,6 @@
-import Board from '../factories/board.js';
+import Board from '../src/factories/board.js';
 
-const board = new Board(4);
+const board = Board(4);
 
 test('Place ship in valid position horizontally', () => {
   expect(board.placeShip(3, [1, 1], 'horizontal'))

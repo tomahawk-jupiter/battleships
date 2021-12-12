@@ -1,8 +1,8 @@
-import Ship from '../factories/ship.js';
+import Ship from '../src/factories/ship.js';
 
 // Ship(length, startPos, direction)
-const ship = new Ship(3, [1, 1], 'horizontal');
-const ship2 = new Ship(3, [1, 1], 'vertical');
+const ship = Ship(3, [1, 1], 'horizontal');
+const ship2 = Ship(3, [1, 1], 'vertical');
 
 test('Ships position (horizontal placement) is an array of coords', () => {
   expect(ship.shipCoords).toStrictEqual([[1,1], [2,1], [3,1]]);
