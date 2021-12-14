@@ -1,24 +1,34 @@
-import Ship from './ship.js';
+import Ship from './ship';
 
 const Board = (boardSize) => {
+  const gameBoard = [];
   const shipArray = [];
   let sunkShips = 0;
 
-  // Create empty board.
-  const gameBoard = [];
-  for (let i = 0; i < boardSize; i ++) {
+  for (let i = 0; i < boardSize; i += 1) {
     const row = [];
-    for (let j = 0; j < boardSize; j ++) {
-      row.push('.');
+    for (let j = 0; j < boardSize; j += 1) {
+      row.push('empty');
     }
     gameBoard.push(row);
   }
+
+  const clearBoard = () => {
+    shipArray.splice(0);
+    gameBoard.splice(0);
+    for (let i = 0; i < boardSize; i += 1) {
+      const row = [];
+      for (let j = 0; j < boardSize; j += 1) {
+        row.push('empty');
+      }
+      gameBoard.push(row);
+    }
+  };
 
   const placeShip = (shipSize, startCoord, direction) => {
     const startX = startCoord[0];
     const startY = startCoord[1];
 
-    // Is ship placement within board limits?
     if (direction === 'horizontal') {
       if (startX + shipSize > boardSize) {
         return 'Beyond board limits';
@@ -29,12 +39,11 @@ const Board = (boardSize) => {
       }
     }
 
-    const ship = new Ship(shipSize, startCoord, direction);
+    const ship = Ship(shipSize, startCoord, direction);
     let overlaps = false;
-    ship.shipCoords.map(cell => {
+    ship.shipCoords.forEach((cell) => {
       const x = cell[0];
       const y = cell[1];
-      // Does placement overlap with another ship?
       if (gameBoard[y][x] === 'ship') {
         overlaps = true;
       } else {
@@ -46,48 +55,48 @@ const Board = (boardSize) => {
       return 'Overlaps with another ship';
     }
 
-    // Add to ships array if its a valid placement
     shipArray.push(ship);
     return gameBoard;
-  } // end of placeShip()
+  };
 
   const receiveAttack = (attackCoord) => {
     const x = attackCoord[0];
     const y = attackCoord[1];
-    if (gameBoard[y][x] === '.') {
+    let resultString;
+    if (gameBoard[y][x] === 'empty') {
       gameBoard[y][x] = 'miss';
-      return 'miss';
+      resultString = 'miss';
     } else if (gameBoard[y][x] === 'ship') {
-      // hit
-      // add to board
       gameBoard[y][x] = 'hit';
-      // loop through ship.hit()
-      shipArray.map(currentShip => {
+      shipArray.forEach((currentShip) => {
         if (currentShip.hit(attackCoord)) {
           if (currentShip.isSunk()) {
             sunkShips += 1;
           }
         }
       });
-      return 'hit';
+      resultString = 'hit';
     } else {
-      return 'already shot this cell';
+      resultString = 'already shot this cell';
     }
-  }
+    return resultString;
+  };
 
   const allSunk = () => {
     if (sunkShips >= shipArray.length) {
       return true;
     }
     return false;
-  }
+  };
 
   return {
     placeShip,
     receiveAttack,
     allSunk,
-    gameBoard
+    gameBoard,
+    clearBoard,
+    shipArray,
   };
-}
+};
 
 export default Board;

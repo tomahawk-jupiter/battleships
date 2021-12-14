@@ -5,21 +5,21 @@ const board = Board(4);
 test('Place ship in valid position horizontally', () => {
   expect(board.placeShip(3, [1, 1], 'horizontal'))
     .toStrictEqual([
-        ['.', '.', '.', '.'],
-        ['.', 'ship', 'ship', 'ship'],
-        ['.', '.', '.', '.'],
-        ['.', '.', '.', '.']
-      ]);
+      ['.', '.', '.', '.'],
+      ['.', 'ship', 'ship', 'ship'],
+      ['.', '.', '.', '.'],
+      ['.', '.', '.', '.'],
+    ]);
 });
 
 test('Place ship in valid position vertically', () => {
   expect(board.placeShip(3, [0, 1], 'vertical'))
     .toStrictEqual([
-        ['.', '.', '.', '.'],
-        ['ship', 'ship', 'ship', 'ship'],
-        ['ship', '.', '.', '.'],
-        ['ship', '.', '.', '.']
-      ]);
+      ['.', '.', '.', '.'],
+      ['ship', 'ship', 'ship', 'ship'],
+      ['ship', '.', '.', '.'],
+      ['ship', '.', '.', '.'],
+    ]);
 });
 
 test('Try to place ship beyond board limit', () => {

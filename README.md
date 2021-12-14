@@ -1,6 +1,6 @@
 # Battleships Game
 
-For learning Test Driven Development (TDD).
+For learning Test Driven Development (TDD) and modules.
 
 ## Project setup
 
@@ -39,9 +39,18 @@ But I hand to do this: `"eslint": "^7.32.0"` then `npm install` because it chang
 
 **Jest fix** keywords are triggering linter. Put this in the .eslintrc (inside the curly braces):
 
-    env: {
-        jest: true
-      }
+    {
+      "extends": "airbnb-base",
+      "globals": {
+        "test": "readonly",
+        "expect": "readonly",
+        "document": "readonly" // for DOM selection
+        },
+      "rules": {
+        "no-console": 'off', // allow console.log
+        "linebreak-style": 0 // ignore LF / CRLF errors
+        }
+    }
 
 **with webpack**
 

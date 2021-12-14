@@ -1,7 +1,12 @@
 {
-"extends": "airbnb-base",
-"scripts":
-  {
-  "test": "jest"
-  }
+  "extends": "airbnb-base",
+  "globals": {
+    "test": "readonly",
+    "expect": "readonly",
+    "document": "readonly"
+    },
+  "rules": {
+    "no-console": 'off',
+    "linebreak-style": 0
+    }
 }
