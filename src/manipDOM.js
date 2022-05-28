@@ -3,18 +3,22 @@ const awayGrid = document.querySelector('.away-grid');
 const directionBtn = document.querySelector('.direction-btn');
 const messageDisplay = document.querySelector('.message');
 
+const seaColor = '#009fff';
+const missColor = '#000';
+const shipColor = '#505350';
+
 const homeColorScheme = {
-  empty: 'blue',
-  ship: 'green',
+  empty: seaColor,
+  ship: shipColor,
   hit: 'red',
-  miss: 'gray',
+  miss: missColor,
 };
 
 const awayColorScheme = {
-  empty: 'blue',
-  ship: 'blue',
+  empty: seaColor,
+  ship: seaColor,
   hit: 'red',
-  miss: 'gray',
+  miss: missColor,
 };
 
 const drawHomeBoard = (board) => {
@@ -49,8 +53,8 @@ const drawAwayBoard = (board) => {
 
 const changeDirection = () => {
   const direction = directionBtn.innerText;
-  directionBtn.innerText = direction === 'horizontal' ? 'vertical'
-    : 'horizontal';
+  directionBtn.innerText =
+    direction === 'HORIZONTAL' ? 'VERTICAL' : 'HORIZONTAL';
 };
 
 const displayTurn = (turnMessage) => {

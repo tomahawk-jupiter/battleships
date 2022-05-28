@@ -1,8 +1,38 @@
 # Battleships Game
 
-For learning Test Driven Development (TDD) and modules.
+A simple Battleships game. An Odin Project assignment for learning Test Driven Development (TDD) and factory functions.
 
-## Project setup
+## Contents
+
+- [Overview](#overview)
+- [Improvement Ideas](#improvement-ideas)
+- [Environment Setup](#environment-setup)
+- [Basic Jest Setup](#basic-jest-setup)
+- [ESLint Setup](#eslint-setup)
+- [Webpack Setup](#webpack-setup)
+
+## Overview
+
+There are some factory functions in `src/factories` for creating boards, players and ships.
+
+The `manipDOM.js` exports some functions for appending DOM elements.
+
+The `index.js` brings everything together into a functioning game.
+
+## Improvement Ideas
+
+The game is currently very basic and could be improved in various ways:
+
+- There is only one set position for the computer player ships.
+- The computer player just unintelligently selects squares at random.
+- There is no reset button to start a new game.
+- There could be a key to show what the square colors stand for.
+- There could be a better defined placement phase of the game.
+- The games styling could be better, perhaps images used.
+
+## Environment Setup
+
+**Note**: I was using the Atom text editor and Windows 7 with older version of Node when I first setup this project.
 
 ### Basic Jest Setup
 
@@ -18,16 +48,6 @@ Add babel to use ES6 modules
 Install the @babel/preset-env package: `npm i -D @babel/preset-env`
 
 Create a `.babelrc` file in the project’s root with the following: `{ "presets": ["@babel/preset-env"] }`
-
------
-
-### Quokka plugin
-
-`Ctrl + K then Q` make current file a quokka file.
-
-`Ctrl + K then S` stop quokka in current file.
-
------
 
 ### Eslint Setup
 
@@ -66,49 +86,50 @@ Then add the plugin to your webpack config. For example:
     // ...
     };
 
-
------
-
 ### Webpack Setup
 
-1. `$ npm install webpack webpack-cli --save-dev`
-4. Create `src/index.js`
-5. Create `dist/index.html` with: `<script src="main.js"></script>`
-6. Create `webpack.config.js` with contents:
+1.  `$ npm install webpack webpack-cli --save-dev`
+2.  Create `src/index.js`
+3.  Create `dist/index.html` with: `<script src="main.js"></script>`
+4.  Create `webpack.config.js` with contents:
 
         const path = require('path');
-      	module.exports = {
-          entry: './src/index.js',
-          output: {
+
+          module.exports = {
+            entry: './src/index.js',
+            output: {
             filename: 'main.js',
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(\_\_dirname, 'dist'),
           },
-      	};
-7. Set `"mode": "development"` (or production or none) in `webpack.config.js`
+        };
 
-8. Add some scripts to package.json: `"build": "webpack"` and `"watch": "webpack --watch"`			
+5.  Set `"mode": "development"` (or production or none) in `webpack.config.js`
 
-  usage: `$npm run build` and `$npm run watch`
+6.  Add some scripts to package.json: `"build": "webpack"` and `"watch": "webpack --watch"`
 
-  OR use
+    usage: `$ npm run build` and `$ npm run watch`
 
-  `$npx webpack` and `$npx webpack --watch`
+    OR use
 
-9. [Webpack Asset Management](https://webpack.js.org/guides/asset-management/)
+    `$ npx webpack` and `$ npx webpack --watch`
 
-	Get css working: `$ npm install --save-dev style-loader css-loader`
+7.  [Webpack Asset Management](https://webpack.js.org/guides/asset-management/)
 
-	Add to `webpack.config.js` this:
+    Get css working: `$ npm install --save-dev style-loader css-loader`
 
-    	module: {
-        rules: [
-          {
-            test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
-          },
-        ],
-     },
+    Add to `webpack.config.js` this:
 
-	Create `src/style.css`
+        module: {
+          rules: [
+            {
+              test: /\.css$/i,
+              use: ['style-loader', 'css-loader'],
+            },
+          ],
+        },
 
-	Import css file into index.js like so: `import './style.css';`
+    Create `src/style.css`
+
+    Import css file into index.js like so: `import './style.css';`
+
+[Page Top](#contents)

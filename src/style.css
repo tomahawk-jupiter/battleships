@@ -3,8 +3,12 @@
   --cell-size: 30px;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
 h1 {
-  color: red;
+  color: #126ea6;
 }
 .grid-container {
   display: flex;
@@ -18,10 +22,18 @@ h1 {
   display: flex;
 }
 .cell {
-  /* width: calc((var(--grid-size) / 5 ) - 5px);
-  height: calc((var(--grid-size) / 5 ) - 5px); */
   width: var(--cell-size);
   height: var(--cell-size);
   border: solid 1px;
   text-align: center;
+}
+button {
+  border: none;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  color: white;
+  background-color: #1d82bf;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
 }

@@ -3,35 +3,32 @@ import Board from '../src/factories/board.js';
 const board = Board(4);
 
 test('Place ship in valid position horizontally', () => {
-  expect(board.placeShip(3, [1, 1], 'horizontal'))
-    .toStrictEqual([
-      ['.', '.', '.', '.'],
-      ['.', 'ship', 'ship', 'ship'],
-      ['.', '.', '.', '.'],
-      ['.', '.', '.', '.'],
-    ]);
+  expect(board.placeShip(3, [1, 1], 'HORIZONTAL')).toStrictEqual([
+    ['empty', 'empty', 'empty', 'empty'],
+    ['empty', 'ship', 'ship', 'ship'],
+    ['empty', 'empty', 'empty', 'empty'],
+    ['empty', 'empty', 'empty', 'empty'],
+  ]);
 });
 
 test('Place ship in valid position vertically', () => {
-  expect(board.placeShip(3, [0, 1], 'vertical'))
-    .toStrictEqual([
-      ['.', '.', '.', '.'],
-      ['ship', 'ship', 'ship', 'ship'],
-      ['ship', '.', '.', '.'],
-      ['ship', '.', '.', '.'],
-    ]);
+  expect(board.placeShip(3, [0, 1], 'VERTICAL')).toStrictEqual([
+    ['empty', 'empty', 'empty', 'empty'],
+    ['ship', 'ship', 'ship', 'ship'],
+    ['ship', 'empty', 'empty', 'empty'],
+    ['ship', 'empty', 'empty', 'empty'],
+  ]);
 });
 
 test('Try to place ship beyond board limit', () => {
-  expect(board.placeShip(3, [2, 1], 'horizontal'))
-    .toBe('Beyond board limits');
-  expect(board.placeShip(3, [0, 2], 'vertical'))
-    .toBe('Beyond board limits');
+  expect(board.placeShip(3, [2, 1], 'HORIZONTAL')).toBe('Beyond board limits');
+  expect(board.placeShip(3, [0, 2], 'VERTICAL')).toBe('Beyond board limits');
 });
 
 test('Try to place ship overlapping another ship', () => {
-  expect(board.placeShip(3, [1, 1], 'horizontal'))
-    .toBe('Overlaps with another ship');
+  expect(board.placeShip(3, [1, 1], 'HORIZONTAL')).toBe(
+    'Overlaps with another ship'
+  );
 });
 
 test('Board can receive a hit', () => {

@@ -29,11 +29,11 @@ const Board = (boardSize) => {
     const startX = startCoord[0];
     const startY = startCoord[1];
 
-    if (direction === 'horizontal') {
+    if (direction === 'HORIZONTAL') {
       if (startX + shipSize > boardSize) {
         return 'Beyond board limits';
       }
-    } else if (direction === 'vertical') {
+    } else if (direction === 'VERTICAL') {
       if (startY + shipSize > boardSize) {
         return 'Beyond board limits';
       }

@@ -20,23 +20,27 @@ const defaultPlacement = [
   {
     length: 3,
     place: [1, 1],
-    direction: 'horizontal',
-  }, {
+    direction: 'HORIZONTAL',
+  },
+  {
     length: 3,
     place: [2, 8],
-    direction: 'horizontal',
-  }, {
+    direction: 'HORIZONTAL',
+  },
+  {
     length: 3,
     place: [4, 4],
-    direction: 'horizontal',
-  }, {
+    direction: 'HORIZONTAL',
+  },
+  {
     length: 3,
     place: [8, 5],
-    direction: 'vertical',
-  }, {
+    direction: 'VERTICAL',
+  },
+  {
     length: 3,
     place: [1, 4],
-    direction: 'vertical',
+    direction: 'VERTICAL',
   },
 ];
 
@@ -81,7 +85,7 @@ const takeTurn = (e) => {
       winMessage('Player Wins');
     } else {
       humanTurn = false;
-      displayTurn('Opponent\'s Turn');
+      displayTurn("Opponent's Turn");
       // Computers turn:
       setTimeout(computerTakeTurn, 2000);
     }
@@ -97,7 +101,10 @@ const playerPlacement = (e) => {
     const dir = directionBtn.innerText;
     const shipLen = 3;
     console.log({
-      id, coord, dir, shipLen,
+      id,
+      coord,
+      dir,
+      shipLen,
     });
     // add create ship and add to shipArray.
     humanPlayer.board.placeShip(shipLen, coord, dir);
@@ -124,20 +131,3 @@ resetBoardBtn.addEventListener('click', () => {
 
 drawHomeBoard(humanPlayer.board.gameBoard);
 drawAwayBoard(computerPlayer.board.gameBoard);
-
-// ########### TODO #######################
-
-// RESET  BUTTON:
-// Make an init board function
-// This can be used to init or reset the game
-
-// RANDOM PLACEMENT:
-// Computer ships should be randomised
-// Or atleast have a few different presets that are randomised
-
-// SHIP SIZES:
-// display ship size options and have a user input for size.
-// eg. a list display: large, med, small.
-// as ships are placed they are removed from the list.
-
-export default takeTurn;

@@ -6,14 +6,14 @@ const Ship = (length, startPos, direction) => {
   let xCoord = startPos[0];
   let yCoord = startPos[1];
 
-  if (direction === 'horizontal') {
+  if (direction === 'HORIZONTAL') {
     while (lengthCount > 0) {
       const coord = [xCoord, yCoord];
       shipCoords.push(coord);
       xCoord += 1;
       lengthCount -= 1;
     }
-  } else if (direction === 'vertical') {
+  } else if (direction === 'VERTICAL') {
     while (lengthCount > 0) {
       const coord = [xCoord, yCoord];
       shipCoords.push(coord);
@@ -39,7 +39,10 @@ const Ship = (length, startPos, direction) => {
   };
 
   return {
-    shipCoords, damagedCoords, hit, isSunk,
+    shipCoords,
+    damagedCoords,
+    hit,
+    isSunk,
   };
 };
 
